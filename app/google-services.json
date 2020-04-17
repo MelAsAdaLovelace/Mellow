@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:666645707038:android:6cccdaae66f3bb498df10f",
+        "mobilesdk_app_id": "1:666645707038:android:f4d76894afa225ad8df10f",
         "android_client_info": {
           "package_name": "com.mellow.mellow"
         }
       },
       "oauth_client": [
         {
-          "client_id": "666645707038-352uc2p624pnqcc9duaf3cndb8c9n6le.apps.googleusercontent.com",
+          "client_id": "666645707038-k65qpbqqmsl3l7rgf2pcr8f1on2gom6r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mellow.mellow",

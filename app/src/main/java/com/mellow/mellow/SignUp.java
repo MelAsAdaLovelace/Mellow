@@ -1,5 +1,6 @@
 package com.mellow.mellow;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
@@ -12,7 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +28,7 @@ public class SignUp extends AppCompatActivity {
     TextView mellowText, signInText;
     TextInputLayout username, password, fullname, email;
     Button loginBtn;
+    FirebaseAuth mAuth;
 /*    FirebaseDatabase rootNode;
     DatabaseReference reference;*/
 
@@ -39,6 +45,7 @@ public class SignUp extends AppCompatActivity {
         email = findViewById(R.id.registerLayoutEmail);
         username = findViewById(R.id.registerLayoutUsername);
         password = findViewById(R.id.registerLayoutPassword);
+        mAuth = FirebaseAuth.getInstance();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +74,24 @@ public class SignUp extends AppCompatActivity {
         String user = username.getEditText().getText().toString();
         String mail = email.getEditText().getText().toString();
         String pass = password.getEditText().getText().toString();
+
+        mAuth.createUserWithEmailAndPassword(mail, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Intent intent = new Intent(SignUp.this, UserProfile.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+
+                        }
+
+                        // ...
+                    }
+                });
 
     }
 
