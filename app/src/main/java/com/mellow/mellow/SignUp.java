@@ -23,14 +23,13 @@ public class SignUp extends AppCompatActivity {
     TextView mellowText, signInText;
     TextInputLayout username, password, fullname, email;
     Button loginBtn;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+/*    FirebaseDatabase rootNode;
+    DatabaseReference reference;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
         loginBtn = findViewById(R.id.regLoginBtn);
         registerBtn = findViewById(R.id.regSignUpBtn);
         hareImg = findViewById(R.id.registerHare);
@@ -120,11 +119,7 @@ public class SignUp extends AppCompatActivity {
         String val = password.getEditText().getText().toString();
         String passwordVal = "^" +
                 //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
                 ".{4,}" +               //at least 4 characters
                 "$";
         if (val.isEmpty()) {
