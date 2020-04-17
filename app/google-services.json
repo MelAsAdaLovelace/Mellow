@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "666645707038",
+    "firebase_url": "https://mellow-days.firebaseio.com",
+    "project_id": "mellow-days",
+    "storage_bucket": "mellow-days.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666645707038:android:6cccdaae66f3bb498df10f",
+        "android_client_info": {
+          "package_name": "com.mellow.mellow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666645707038-352uc2p624pnqcc9duaf3cndb8c9n6le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mellow.mellow",
+            "certificate_hash": "38fea6d49abd3d7a289afad3635c18a8c2325d85"
+          }
+        },
+        {
+          "client_id": "666645707038-04j3foe6f6qvicih3df9l69bgovcfkr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1FoItgp8JVN_CvnPkx2I76XAiWRAJsOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666645707038-04j3foe6f6qvicih3df9l69bgovcfkr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
