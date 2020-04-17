@@ -30,7 +30,7 @@
             android:transitionName="logo_text"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
-            android:text="Mellow Days"
+            android:text="@string/app_name"
             android:textSize="40sp"
             android:fontFamily="@font/economica"/>
     </LinearLayout>
@@ -39,7 +39,7 @@
         android:id="@+id/registerSignText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up, Spread Wisdom."
+        android:text="@string/signUpMsg"
         android:transitionName="logo_descr"
         android:fontFamily="@font/antic"
         android:layout_marginTop="10dp"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:hint="Fullname"
+            android:hint="@string/fullname"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:hint="Username"
+            android:hint="@string/username"
             android:transitionName="trans_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:hint="Email"
+            android:hint="@string/email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:passwordToggleEnabled="true"
             android:transitionName="trans_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -124,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroundYellow"
-        android:text="Sign Up"
+        android:text="@string/signUp"
         android:textColor="@color/white"
         android:transitionName="trans_go_btn"
         android:layout_marginTop="10dp"
@@ -137,7 +137,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparentWhite"
-        android:text="Already have an account? LogIn."
+        android:text="@string/haveAccLogin"
         android:transitionName="trans_reglog_btn"
         android:fontFamily="@font/antic"
         android:layout_gravity="right"

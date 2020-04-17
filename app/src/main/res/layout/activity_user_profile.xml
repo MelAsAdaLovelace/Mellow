@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/backgroundYellow"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:transitionName="logo_image"
+                android:src="@drawable/profile_img" />
+
+            <TextView
+                android:id="@+id/userProfileFullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:transitionName="logo_text"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/profile_img"
+                android:fontFamily="@font/economica"
+                android:includeFontPadding="false"
+                android:text="@string/givenFullname"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/userProfileUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transitionName="logo_descr"
+                android:layout_below="@+id/userProfileFullname"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/profile_img"
+                android:fontFamily="@font/economica"
+                android:includeFontPadding="false"
+                android:text="@string/givenUsername"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-90dp"
+            android:padding="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/backgroundYellow"
+                app:cardElevation="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/moon1" />
+
+                    <TextView
+                        android:id="@+id/userProfileStreakCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/antic"
+                        android:includeFontPadding="false"
+                        android:text="100"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/userProfileStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/userProfileStreakCount"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/antic"
+                        android:includeFontPadding="false"
+                        android:text="Streak"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/backgroundYellow"
+                app:cardElevation="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/moon2" />
+
+                    <TextView
+                        android:id="@+id/userProfileTimeCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/antic"
+                        android:includeFontPadding="false"
+                        android:text="122"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/userTimeUsed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/userProfileTimeCount"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/antic"
+                        android:includeFontPadding="false"
+                        android:text="Contribution"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/registerLayoutFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/fullname">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/UserProfileFullNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/profile_fullname"
+                    android:drawablePadding="10dp"
+                    android:inputType="text"
+                    android:text="@string/givenFullname" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/UserProfileLayoutEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/UserProfileEmailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/send"
+                    android:drawablePadding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/givenEmail" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/UserProfileLayoutPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/password"
+                android:transitionName="trans_password"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/UserProfilePasswordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/lock_reset"
+                    android:drawablePadding="10dp"
+                    android:inputType="textPassword"
+                    android:text="@string/givenPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/regSignUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/backgroundYellow"
+                android:fontFamily="@font/economica"
+                android:text="@string/update"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:transitionName="trans_go_btn" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">Mellow</string>
+    <string name="app_name">Mellow Days</string>
+    <string name="signIn">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="newUserReg">New User? REGISTER</string>
+    <string name="forgetPassword">Forget Password?</string>
+
+    <string name="signUpMsg">Sign Up, Spread Wisdom.</string>
+    <string name="signUp">Sign Up</string>
+    <string name="fullname">Fullname</string>
+    <string name="email">Email</string>
+    <string name="haveAccLogin">Already have an account? LogIn.</string>
+
+    <string name="givenFullname">Melike Mellow</string>
+    <string name="givenUsername">melikemellow</string>
+    <string name="givenEmail">melike@gmail.com</string>
+    <string name="givenPassword">123456mellow*</string>
+
+    <string name="update">UPDATE</string>
 </resources>

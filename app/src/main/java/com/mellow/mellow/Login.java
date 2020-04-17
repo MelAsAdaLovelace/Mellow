@@ -37,6 +37,21 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.loginLayoutUsername);
         password = findViewById(R.id.loginLayoutPassword);
 
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(Login.this, UserProfile.class);
+                Pair[] pairs = new Pair[5];
+                pairs[0] = new Pair<View, String>(hareImg, "logo_image");
+                pairs[1] = new Pair<View, String>(mellowText, "logo_text");
+                pairs[2] = new Pair<View, String>(signInText, "logo_descr");
+                pairs[3] = new Pair<View, String>(password, "trans_password");
+                pairs[4] = new Pair<View, String>(signInBtn, "trans_go_btn");
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
+                startActivity(profileIntent, options.toBundle());
+            }
+        });
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
