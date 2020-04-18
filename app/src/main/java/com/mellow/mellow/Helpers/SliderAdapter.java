@@ -1,4 +1,4 @@
-package com.mellow.mellow.Adapters;
+package com.mellow.mellow.Helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     if(!isLoggedIn){
                         intent = new Intent(MainActivity.this, Login.class);
                     }else{
-                        intent = new Intent(MainActivity.this, UserProfile.class);
+                        intent = new Intent(MainActivity.this, UserDashboard.class);
                     }
 
                 }

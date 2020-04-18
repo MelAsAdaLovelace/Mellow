@@ -36,4 +36,30 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="start_button">Let\'s Get Started!</string>
+
+
+    <string name="dashboard">DASHBOARD</string>
+    <string name="prev_semesters">Semesters</string>
+    <string name="courses">Courses</string>
+    <string name="schedule">Schedule</string>
+    <string name="assignments">Assigments</string>
+    <string name="search">Search for courses...</string>
+    <string name="viewAll">View All</string>
+
+    <!--Dashboard Titles-->
+    <string name="upcoming_title">Upcoming Assignments</string>
+    <string name="curr_courses_title">Current Semester Courses</string>
+    <string name="prev_sem_title">Previous Semesters</string>
+
+
+    <!--Dashboard Descriptions-->
+    <string name="upcoming_descr">This week you have these assignments</string>
+    <!--  <string name="curr_courses_descr">Click on a course to manage.</string>
+    <string name="prev_sem_descrip">Click on a semester to manage.</string>-->
+
+    <string name="description">Assignment Description</string>
+    <string name="progress">Progress</string>
+    <string name="currentGrade">Current Grade: </string>
+
+
 </resources>

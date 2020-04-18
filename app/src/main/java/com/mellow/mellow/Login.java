@@ -150,7 +150,7 @@ public class Login extends AppCompatActivity {
                                     SharedPreferences.Editor editor = loggedIn.edit();
                                     editor.putBoolean("isLoggedIn", true);
                                     editor.commit();
-                                    Intent profileIntent = new Intent(Login.this, UserProfile.class);
+                                    Intent profileIntent = new Intent(Login.this, UserDashboard.class);
                                     Pair[] pairs = new Pair[5];
                                     pairs[0] = new Pair<View, String>(hareImg, "logo_image");
                                     pairs[1] = new Pair<View, String>(mellowText, "logo_text");
@@ -222,7 +222,7 @@ public class Login extends AppCompatActivity {
                     SharedPreferences.Editor editor = loggedIn.edit();
                     editor.putBoolean("isLoggedIn", true);
                     editor.commit();
-                    startActivity(new Intent(Login.this, UserProfile.class));
+                    startActivity(new Intent(Login.this, UserDashboard.class));
                 }else{
 
                 }

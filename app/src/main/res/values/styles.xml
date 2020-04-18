@@ -10,5 +10,10 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="mellowRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/home_background</item>
+        <item name="colorControlActivated">@color/card2</item>
+
+    </style>
 
 </resources>
