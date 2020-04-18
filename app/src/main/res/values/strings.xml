@@ -5,6 +5,7 @@
     <string name="password">Password</string>
     <string name="newUserReg">New User? REGISTER</string>
     <string name="forgetPassword">Forget Password?</string>
+    <string name="logout">Log Out</string>
 
     <string name="signUpMsg">Sign Up, Spread Wisdom.</string>
     <string name="signUp">Sign Up</string>

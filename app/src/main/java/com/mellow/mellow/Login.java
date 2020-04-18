@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -55,6 +56,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthStateListener;
     DatabaseReference mReference;
     GoogleSignInClient mGoogleSignInClient;
+    SharedPreferences loggedIn;
 
 
     @Override
@@ -63,7 +65,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        loggedIn = getSharedPreferences("loggedIn", MODE_PRIVATE);
 
         signInBtn = findViewById(R.id.loginLoginBtn);
         registerBtn = findViewById(R.id.loginRegisterBtn);
@@ -145,6 +147,9 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
+                                    SharedPreferences.Editor editor = loggedIn.edit();
+                                    editor.putBoolean("isLoggedIn", true);
+                                    editor.commit();
                                     Intent profileIntent = new Intent(Login.this, UserProfile.class);
                                     Pair[] pairs = new Pair[5];
                                     pairs[0] = new Pair<View, String>(hareImg, "logo_image");
@@ -214,8 +219,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    SharedPreferences.Editor editor = loggedIn.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.commit();
                     startActivity(new Intent(Login.this, UserProfile.class));
-
                 }else{
 
                 }

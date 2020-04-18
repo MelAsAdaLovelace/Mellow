@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView hare;
     TextView mellowText;
     SharedPreferences onBoardingPref;
+    SharedPreferences loggedIn;
     private static int SPLASH_SCREEN = 3000; //5sec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,14 @@ public class MainActivity extends AppCompatActivity {
                     editor.putBoolean("firstTime", false);
                     editor.commit();
                 }else{
-                    intent = new Intent(MainActivity.this, Login.class);
+                    loggedIn = getSharedPreferences("loggedIn", MODE_PRIVATE);
+                    boolean isLoggedIn = loggedIn.getBoolean("isLoggedIn", false);
+                    if(!isLoggedIn){
+                        intent = new Intent(MainActivity.this, Login.class);
+                    }else{
+                        intent = new Intent(MainActivity.this, UserProfile.class);
+                    }
+
                 }
 
                 Pair[] pairs = new Pair[2];

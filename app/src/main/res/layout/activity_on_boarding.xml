@@ -47,6 +47,7 @@
             android:background="@color/backgroundYellow"
             android:fontFamily="@font/economica"
             android:text="@string/start_button"
+            android:onClick="goToLogin"
             android:visibility="invisible" />
 
         <LinearLayout

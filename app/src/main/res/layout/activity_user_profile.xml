@@ -11,11 +11,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@color/backgroundYellow"
             android:padding="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                android:clickable="true"
+                android:onClick="logOut"
+                android:elevation="5dp"/>
 
             <ImageView
                 android:id="@+id/profile_img"

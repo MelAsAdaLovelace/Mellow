@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -44,10 +45,13 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view){
-        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+        startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
-
+    public void goToLogin(View view){
+        startActivity(new Intent(getApplicationContext(), Login.class));
+        finish();
+    }
     public void next(View view){
         viewPager.setCurrentItem(currPos+1);
     }
