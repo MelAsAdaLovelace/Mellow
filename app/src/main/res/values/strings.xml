@@ -18,4 +18,21 @@
     <string name="givenPassword">123456mellow*</string>
 
     <string name="update">UPDATE</string>
+
+    <!--ON BOARDING STRINGS-->
+    <!--Titles-->
+    <string name="first_slide_title">Add your courses!</string>
+    <string name="second_slide_title">Predict your GPA!</string>
+    <string name="third_slide_title">Never miss a due date!</string>
+    <string name="fourth_slide_title">Relax and enjoy studying!</string>
+
+    <!--Descriptions-->
+    <string name="first_slide_descr">You can add any courses to any semester and add the assignments with their weights.</string>
+    <string name="second_slide_descr">You can use our default letter grades or you can add yourself for each course.</string>
+    <string name="third_slide_descr">You can add upcoming assignments and see them on your weekly planner.</string>
+    <string name="fourth_slide_descr">No need to worry about your academic life since you can foresee how well you are handling. Organize your thought and</string>
+
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="start_button">Let\'s Get Started!</string>
 </resources>

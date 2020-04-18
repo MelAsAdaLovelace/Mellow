@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,8 +31,8 @@ public class SignUp extends AppCompatActivity {
     TextInputLayout username, password, fullname, email;
     Button loginBtn;
     FirebaseAuth mAuth;
-/*    FirebaseDatabase rootNode;
-    DatabaseReference reference;*/
+    FirebaseDatabase mDatabase;
+    DatabaseReference mReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,16 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         loginBtn = findViewById(R.id.regLoginBtn);
         registerBtn = findViewById(R.id.regSignUpBtn);
+
         hareImg = findViewById(R.id.registerHare);
         mellowText = findViewById(R.id.registerTextMellow);
         signInText = findViewById(R.id.registerSignText);
         fullname = findViewById(R.id.registerLayoutFullName);
         email = findViewById(R.id.registerLayoutEmail);
-        username = findViewById(R.id.registerLayoutUsername);
         password = findViewById(R.id.registerLayoutPassword);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +59,7 @@ public class SignUp extends AppCompatActivity {
                 pairs[0] = new Pair<View, String>(hareImg, "logo_image");
                 pairs[1] = new Pair<View, String>(mellowText, "logo_text");
                 pairs[2] = new Pair<View, String>(signInText, "logo_descr");
-                pairs[3] = new Pair<View, String>(username, "trans_username");
+                pairs[3] = new Pair<View, String>(username, "trans_email");
                 pairs[4] = new Pair<View, String>(password, "trans_password");
                 pairs[5] = new Pair<View, String>(registerBtn, "trans_go_btn");
                 pairs[6] = new Pair<View, String>(loginBtn, "trans_reglog_btn");
@@ -66,13 +70,12 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    public void registerUser(View view) {
-        if(!validateName() | !validateUsername() | !validateEmail() | !validatePassword()){
+    public void registerUser(final View view) {
+        if(!validateName() |  !validateEmail() | !validatePassword()){
             return;
         }
-        String name = fullname.getEditText().getText().toString();
-        String user = username.getEditText().getText().toString();
-        String mail = email.getEditText().getText().toString();
+        final String name = fullname.getEditText().getText().toString();
+        final String mail = email.getEditText().getText().toString();
         String pass = password.getEditText().getText().toString();
 
         mAuth.createUserWithEmailAndPassword(mail, pass)
@@ -81,12 +84,15 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(SignUp.this, UserProfile.class);
+                            String uid =  FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            UserInfo info = new UserInfo(name, mail);
+                            mReference.child("Users").child(uid).child("userInfo").setValue(info);
+                            Intent intent = new Intent(SignUp.this, Login.class);
                             startActivity(intent);
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
-
+                            email.setError("Already registered.");
                         }
 
                         // ...
@@ -108,21 +114,6 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    private boolean validateUsername() {
-        String val = username.getEditText().getText().toString();
-        String noWhiteSpace = "\\A\\w{4,20}\\z";
-        if (val.isEmpty()) {
-            username.setError("Field cannot be empty");
-            return false;
-        } else if (!val.matches(noWhiteSpace)) {
-            username.setError("Whitespaces are not allowed");
-            return false;
-        } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
-            return true;
-        }
-    }
 
     private boolean validateEmail() {
         String val = email.getEditText().getText().toString();
@@ -158,6 +149,10 @@ public class SignUp extends AppCompatActivity {
             password.setErrorEnabled(false);
             return true;
         }
+    }
+
+    private void makeToastText(View view, String text){
+        Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
 }

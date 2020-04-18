@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView hare;
     TextView mellowText;
-
-    private static int SPLASH_SCREEN = 5000; //5sec
+    SharedPreferences onBoardingPref;
+    private static int SPLASH_SCREEN = 3000; //5sec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +43,25 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, Login.class);
+                Intent intent;
+                onBoardingPref = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
+                boolean isFirstTime = onBoardingPref.getBoolean("firstTime", true);
+                if(isFirstTime){
+                    intent = new Intent(MainActivity.this, OnBoarding.class);
+                    SharedPreferences.Editor editor = onBoardingPref.edit();
+                    editor.putBoolean("firstTime", false);
+                    editor.commit();
+                }else{
+                    intent = new Intent(MainActivity.this, Login.class);
+                }
+
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(hare, "logo_name");
                 pairs[1] = new Pair<View, String>(mellowText, "logo_text");
 
                 ActivityOptions options  = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
                 startActivity(intent, options.toBundle());
+                finish();
             }
         }, SPLASH_SCREEN);
 

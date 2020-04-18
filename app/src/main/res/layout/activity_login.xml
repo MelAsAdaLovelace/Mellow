@@ -50,15 +50,16 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/loginLayoutUsername"
+            android:id="@+id/loginLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:transitionName="trans_username"
-            android:hint="@string/username"
+            android:hint="@string/email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginUsernameEditText"
+                android:id="@+id/loginEmailEditText"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -94,6 +95,11 @@
             android:transitionName="trans_go_btn"
             android:textSize="25sp"/>
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/loginGoogleBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,6 +130,8 @@
                 android:layout_gravity="right"
                 android:layout_margin="5dp"
                 android:elevation="0dp"/>
+
+
         </LinearLayout>
 
 
