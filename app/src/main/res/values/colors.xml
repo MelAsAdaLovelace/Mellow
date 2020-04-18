@@ -17,5 +17,8 @@
     <color name="card2">#B8D7F5</color>
     <color name="card3">#F7C79F</color>
     <color name="card4">#7ADCCF</color>
+    
+    <color name="light_background">#F1F9FB</color>
+    <color name="japanese_indigo">#293C4C</color>
 
 </resources>

@@ -17,6 +17,17 @@
             android:layout_height="300dp"
             android:background="@color/backgroundYellow"
             android:padding="20dp">
+
+            <TextView
+                android:id="@+id/profile_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToDashboard"
+                android:text="@string/home"
+                android:gravity="center"
+                android:fontFamily="@font/antic"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_chevron_left"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
