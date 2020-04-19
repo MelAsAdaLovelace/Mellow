@@ -1,10 +1,10 @@
 package com.mellow.mellow.Helpers;
 
-public class AssignmentHelper {
+public class DashboardAssignmentHelper {
     int image;
     String title, description;
 
-    public AssignmentHelper(int image, String title, String description) {
+    public DashboardAssignmentHelper(int image, String title, String description) {
         this.image = image;
         this.title = title;
         this.description = description;
@@ -21,4 +21,6 @@ public class AssignmentHelper {
     public String getDescription() {
         return description;
     }
+
+
 }

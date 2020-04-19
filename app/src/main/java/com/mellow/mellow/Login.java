@@ -57,6 +57,7 @@ public class Login extends AppCompatActivity {
     DatabaseReference mReference;
     GoogleSignInClient mGoogleSignInClient;
     SharedPreferences loggedIn;
+    SharedPreferences userInfo;
 
 
     @Override
@@ -66,6 +67,7 @@ public class Login extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         loggedIn = getSharedPreferences("loggedIn", MODE_PRIVATE);
+        userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
 
         signInBtn = findViewById(R.id.loginLoginBtn);
         registerBtn = findViewById(R.id.loginRegisterBtn);
@@ -150,6 +152,12 @@ public class Login extends AppCompatActivity {
                                     SharedPreferences.Editor editor = loggedIn.edit();
                                     editor.putBoolean("isLoggedIn", true);
                                     editor.commit();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String userid = user.getUid();
+                                    SharedPreferences.Editor userEditor = userInfo.edit();
+                                    userEditor.putString("userid", userid);
+                                    userEditor.commit();
+                                    makeToastText(v, userid);
                                     Intent profileIntent = new Intent(Login.this, UserDashboard.class);
                                     Pair[] pairs = new Pair[5];
                                     pairs[0] = new Pair<View, String>(hareImg, "logo_image");
@@ -213,8 +221,8 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private void FirebaseGoogleAuth(GoogleSignInAccount account) {
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+    private void FirebaseGoogleAuth(final GoogleSignInAccount account) {
+        final AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -222,6 +230,11 @@ public class Login extends AppCompatActivity {
                     SharedPreferences.Editor editor = loggedIn.edit();
                     editor.putBoolean("isLoggedIn", true);
                     editor.commit();
+//                    FirebaseUser user = ;
+                    String userid = mAuth.getUid();
+                    SharedPreferences.Editor userEditor2 = userInfo.edit();
+                    userEditor2.putString("userid", userid);
+                    userEditor2.commit();
                     startActivity(new Intent(Login.this, UserDashboard.class));
                 }else{
 

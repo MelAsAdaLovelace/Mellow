@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.mellow.mellow.Helpers.AssignmentHelper;
+import com.mellow.mellow.Helpers.DashboardAssignmentHelper;
 import com.mellow.mellow.Helpers.CourseHelper;
 
 import java.util.ArrayList;
@@ -125,9 +125,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 editor2.commit();
                 startActivity(new Intent(UserDashboard.this, MainActivity.class));
                 finish();
+                return true;
             case R.id.nav_profile:
                 startActivity(new Intent(UserDashboard.this, UserProfile.class));
                 finish();
+                return true;
 
         }
         return true;
@@ -151,13 +153,17 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         assignmentRecycler.setHasFixedSize(true);
         assignmentRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        ArrayList<AssignmentHelper> assignmentHelpers = new ArrayList<>();
-        assignmentHelpers.add(new AssignmentHelper(R.drawable.relax_hare, "415 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
-        assignmentHelpers.add(new AssignmentHelper(R.drawable.tick, "416 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
-        assignmentHelpers.add(new AssignmentHelper(R.drawable.tick, "418 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
+        ArrayList<DashboardAssignmentHelper> dashboardAssignmentHelpers = new ArrayList<>();
+        dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.relax_hare, "415 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
+        dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.tick, "416 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
+        dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.tick, "418 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
 
-        assignmentAdapter = new AssignmentsAdapter(assignmentHelpers);
+        assignmentAdapter = new DashboardAssignmentsAdapter(dashboardAssignmentHelpers);
         assignmentRecycler.setAdapter(assignmentAdapter);
     }
 
+    public void goToAssignments(View view) {
+        startActivity(new Intent(UserDashboard.this, Assignments.class));
+        finish();
+    }
 }

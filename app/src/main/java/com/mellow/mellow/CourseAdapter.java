@@ -3,13 +3,11 @@ package com.mellow.mellow;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mellow.mellow.Helpers.AssignmentHelper;
 import com.mellow.mellow.Helpers.CourseHelper;
 
 import java.util.ArrayList;

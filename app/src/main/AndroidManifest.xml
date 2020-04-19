@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuHeader"></activity>
+        <activity android:name=".Assignments"></activity>
+        <activity android:name=".MenuHeader" />
         <activity android:name=".UserDashboard" />
         <activity android:name=".OnBoarding" />
         <activity android:name=".UserProfile" />
