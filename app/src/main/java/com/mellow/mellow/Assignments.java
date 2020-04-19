@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.mellow.mellow.Helpers.AssignmentItemHelper;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class Assignments extends AppCompatActivity {
 
@@ -31,6 +36,7 @@ public class Assignments extends AppCompatActivity {
     ArrayList<AssignmentItemHelper> assignmentList;
     AssignmentAdapter adapter;
     SharedPreferences userInfo;
+    ImageView addNewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,28 +44,26 @@ public class Assignments extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_assignments);
         pageTitle = findViewById(R.id.ass_page_title);
+        addNewBtn = findViewById(R.id.assignments_add_plus);
+        addNewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Assignments.this, NewAssignmentForm.class));
+            }
+        });
 
         assignRecycle = findViewById(R.id.ass_recycler);
-        assignRecycle.hasFixedSize();
-        assignRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-//        assignRecycle.setLayoutManager(new LinearLayoutManager(this));
+        assignRecycle.setLayoutManager(new LinearLayoutManager(this));
+//        assignRecycle.hasFixedSize();
+//        assignRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-/*    assignmentList = new ArrayList<>();
 
-        adapter = new AssignmentAdapter(assignmentList);
-        assignRecycle.setAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
+
         assignmentList = new ArrayList<>();
         userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
         String userid = userInfo.getString("userid", "");
         mReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid).child("assignments");
-      /*  assignmentList.add(new AssignmentItemHelper("COMP416", "Spring2020", "Melike"));
-        assignmentList.add(new AssignmentItemHelper("COMP415", "Spring2020", "Öznur"));
-        assignmentList.add(new AssignmentItemHelper("COMP491", "Spring2020", "MTS"));
 
-
-        adapter = new AssignmentAdapter(assignmentList);
-        assignRecycle.setAdapter(adapter);*/
 
 
         //SORUN BURADA
@@ -70,7 +74,7 @@ public class Assignments extends AppCompatActivity {
                    AssignmentItemHelper item = dataSnapshot1.getValue(AssignmentItemHelper.class);
                    assignmentList.add(item);
                 }
-                adapter = new AssignmentAdapter(assignmentList);
+                adapter = new AssignmentAdapter(getBaseContext(),assignmentList);
                 assignRecycle.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -88,5 +92,9 @@ public class Assignments extends AppCompatActivity {
     public void goToDashboard(View view) {
         startActivity(new Intent(Assignments.this, UserDashboard.class));
         finish();
+    }
+
+    public void createAssignmentForm(View view) {
+        startActivity(new Intent(Assignments.this, NewAssignmentForm.class));
     }
 }

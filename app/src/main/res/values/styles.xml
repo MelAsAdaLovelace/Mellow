@@ -16,5 +16,19 @@
 
     </style>
 
+    <style name="MyDialogTheme" parent="android:Theme.Material.Dialog">
+        <item name="android:datePickerStyle">@style/MyDatePicker</item>
+    </style>
+
+    <style name="MyDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:colorAccent">@color/backgroundYellow</item>
+        <item name="android:calendarTextColor">@color/backgroundYellow</item>
+        <item name="android:datePickerMode">calendar</item>
+    </style>
+
+    <style name="Theme.MyDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 </resources>

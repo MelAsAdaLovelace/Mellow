@@ -1,6 +1,7 @@
 package com.mellow.mellow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,24 +21,40 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
     Context context;
     ArrayList<AssignmentItemHelper> assignments;
 
-    public AssignmentAdapter(ArrayList<AssignmentItemHelper> assignments) {
+    public AssignmentAdapter(Context context, ArrayList<AssignmentItemHelper> assignments) {
+        this.context = context;
         this.assignments = assignments;
     }
 
     @NonNull
     @Override
     public AssignmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.assignment_item, parent, false);
-        AssignmentViewHolder dashboardAssignmentViewHolder = new AssignmentViewHolder(view);
-        return dashboardAssignmentViewHolder;
+        return new AssignmentViewHolder(LayoutInflater.from(context).inflate(R.layout.assignment_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AssignmentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final AssignmentViewHolder holder, int position) {
         AssignmentItemHelper helper = assignments.get(position);
         holder.title.setText(helper.getTitle());
         holder.descr.setText(helper.getDescr());
-        holder.date.setText(helper.getDueDate());
+        holder.date.setText(helper.getDue());
+
+        final String titleText = assignments.get(position).getTitle();
+        final String descrText = assignments.get(position).getDescr();
+        final String dueText = assignments.get(position).getDue();
+        final String assid = assignments.get(position).getAssID();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AssignmentCardDetails.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("title", titleText);
+                intent.putExtra("descr", descrText);
+                intent.putExtra("duedate", dueText);
+                intent.putExtra("assID", assid);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -63,11 +63,23 @@
     <string name="currentGrade">Current Grade: </string>
 
 
-    <!-- Menu-->
+    <!-- Menu -->
     <string name="home">Home</string>
     <string name="gpa_calc">GPA Calculator</string>
     <string name="nav_search">Search</string>
     <string name="profile">Profile</string>
+
+    <!-- Assignment Form -->
+    <string name="new_ass">New Assignment</string>
+    <string name="ass_title">Title</string>
+    <string name="ass_title_hint">Name your task</string>
+    <string name="ass_descr">Description</string>
+    <string name="ass_descr_hint">Detail your task</string>
+    <string name="ass_due_date">Due Date</string>
+    <string name="approve_new_ass">Create new assignment</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_ass">Edit Assignment</string>
+    <string name="delete">Delete</string>
 
 
 </resources>

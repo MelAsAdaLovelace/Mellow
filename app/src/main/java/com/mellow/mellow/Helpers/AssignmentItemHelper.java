@@ -3,39 +3,47 @@ package com.mellow.mellow.Helpers;
 public class AssignmentItemHelper {
 
 
-        String title, dueDate, descr;
+    String title, descr, due, assID;
 
-        public AssignmentItemHelper(String descr, String dueDate, String title) {
+    public AssignmentItemHelper(String title, String descr, String due, String assID) {
+        this.title = title;
+        this.descr = descr;
+        this.due = due;
+        this.assID = assID;
+    }
 
-            this.descr = descr;
-            this.dueDate = dueDate;
-            this.title = title;
-        }
+    public String getAssID() {
+        return assID;
+    }
+
+    public void setAssID(String assID) {
+        this.assID = assID;
+    }
 
     public AssignmentItemHelper() {
     }
 
     public String getTitle() {
-            return title;
-        }
+        return title;
+    }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public String getDueDate() {
-            return dueDate;
-        }
+    public String getDescr() {
+        return descr;
+    }
 
-        public void setDueDate(String dueDate) {
-            this.dueDate = dueDate;
-        }
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
 
-        public String getDescr() {
-            return descr;
-        }
+    public String getDue() {
+        return due;
+    }
 
-        public void setDescr(String descr) {
-            this.descr = descr;
-        }
+    public void setDue(String due) {
+        this.due = due;
+    }
 }

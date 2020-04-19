@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Assignments"></activity>
+        <activity android:name=".AssignmentCardDetails"
+            android:excludeFromRecents="true"
+            android:label=""
+            android:theme="@style/Theme.MyDialog"/>
+        <activity
+            android:name=".NewAssignmentForm"
+            android:excludeFromRecents="true"
+            android:label=""
+            android:theme="@style/Theme.MyDialog" />
+        <activity android:name=".Assignments" />
         <activity android:name=".MenuHeader" />
         <activity android:name=".UserDashboard" />
         <activity android:name=".OnBoarding" />
