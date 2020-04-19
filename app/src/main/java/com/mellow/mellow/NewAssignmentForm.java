@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mellow.mellow.Helpers.AssignmentItemHelper;
 
+import java.util.Date;
 import java.util.Random;
 
 public class NewAssignmentForm extends AppCompatActivity {
@@ -55,10 +56,11 @@ public class NewAssignmentForm extends AppCompatActivity {
             if(titleText.length() <= title.getCounterMaxLength() && descrText.length() <= descr.getCounterMaxLength() && dueText.length() <= due.getCounterMaxLength() ){
                 SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
                 String userid = userInfo.getString("userid", "");
-                assId = new Random().nextInt();
+                Date date = new Date();
+                assId = date.getTime();
                 final String assID = "ass" + assId;
                 mReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid).child("assignments").child(assID);
-                mReference.addValueEventListener(new ValueEventListener() {
+                mReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         mReference.setValue(new AssignmentItemHelper(titleText, descrText,dueText, assID));

@@ -97,4 +97,9 @@ public class Assignments extends AppCompatActivity {
     public void createAssignmentForm(View view) {
         startActivity(new Intent(Assignments.this, NewAssignmentForm.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
 }

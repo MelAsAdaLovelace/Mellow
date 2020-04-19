@@ -14,50 +14,28 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/assignment_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/relax_hare"
-            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/assignment_title_user_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/ass_title"
             android:fontFamily="@font/antic"
             android:textColor="@color/black"
             android:textSize="20sp" />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/progress"
-            android:fontFamily="@font/antic"
-            android:textSize="12sp"/>
-        <RatingBar
-            android:id="@+id/assignment_progress_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:numStars="5"
-            android:stepSize="0.5"
-            android:rating="3.5"
-            android:elevation="2dp"
-            style="@style/Widget.AppCompat.RatingBar.Small"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/description"
-            android:fontFamily="@font/antic"
-            android:textColor="@color/black"
-            android:textSize="12sp"/>
-        <TextView
             android:id="@+id/assignment_descr_user_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:fontFamily="@font/antic"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/assignment_date_user_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:text="@string/ass_due_date"
             android:fontFamily="sans-serif-condensed-light"
             android:textSize="12sp"/>
     </LinearLayout>

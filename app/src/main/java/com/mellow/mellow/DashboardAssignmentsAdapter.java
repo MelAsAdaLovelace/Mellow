@@ -32,9 +32,9 @@ public class DashboardAssignmentsAdapter extends RecyclerView.Adapter<DashboardA
     @Override
     public void onBindViewHolder(@NonNull DashboardAssignmentViewHolder holder, int position) {
         DashboardAssignmentHelper dashboardAssignmentHelper = assignments.get(position);
-        holder.image.setImageResource(dashboardAssignmentHelper.getImage());
         holder.title.setText(dashboardAssignmentHelper.getTitle());
         holder.descr.setText(dashboardAssignmentHelper.getDescription());
+        holder.due.setText(dashboardAssignmentHelper.getDue());
     }
 
     @Override
@@ -44,13 +44,12 @@ public class DashboardAssignmentsAdapter extends RecyclerView.Adapter<DashboardA
 
 
     public static class DashboardAssignmentViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title, descr;
+        TextView title, descr, due;
         public DashboardAssignmentViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.assignment_image);
             title = itemView.findViewById(R.id.assignment_title_user_input);
             descr = itemView.findViewById(R.id.assignment_descr_user_input);
+            due = itemView.findViewById(R.id.assignment_date_user_input);
         }
     }
 }

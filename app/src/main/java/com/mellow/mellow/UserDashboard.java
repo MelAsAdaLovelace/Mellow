@@ -15,23 +15,30 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.mellow.mellow.Helpers.AssignmentItemHelper;
 import com.mellow.mellow.Helpers.DashboardAssignmentHelper;
 import com.mellow.mellow.Helpers.CourseHelper;
 
 import java.util.ArrayList;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private static final float END_SCALE = 0.7f ;
+    DashboardAssignmentsAdapter adapter;
+    private static final float END_SCALE = 0.7f;
     RecyclerView assignmentRecycler, courseRecycler;
     RecyclerView.Adapter assignmentAdapter, courseAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ImageView menuIcon;
     LinearLayout contentView;
-
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +84,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         });
 
         animateNavigationDraw();
-        
+
     }
 
     private void animateNavigationDraw() {
@@ -113,7 +120,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.nav_logout:
                 SharedPreferences loggedIn = getSharedPreferences("loggedIn", MODE_PRIVATE);
                 SharedPreferences onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
@@ -150,16 +157,44 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
     private void assignmentRecyler() {
+
         assignmentRecycler.setHasFixedSize(true);
         assignmentRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        final ArrayList<DashboardAssignmentHelper> assignmentList = new ArrayList<>();
+        SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
+        String userid = userInfo.getString("userid", "");
+        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid).child("assignments");
 
-        ArrayList<DashboardAssignmentHelper> dashboardAssignmentHelpers = new ArrayList<>();
+
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    if(count < 5){
+                        DashboardAssignmentHelper item = dataSnapshot1.getValue(DashboardAssignmentHelper.class);
+                        assignmentList.add(item);
+                    }
+                    count++;
+
+                }
+                adapter = new DashboardAssignmentsAdapter(assignmentList);
+                assignmentRecycler.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        /*ArrayList<DashboardAssignmentHelper> dashboardAssignmentHelpers = new ArrayList<>();
         dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.relax_hare, "415 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
         dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.tick, "416 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
         dashboardAssignmentHelpers.add(new DashboardAssignmentHelper(R.drawable.tick, "418 persembe dersi", "2 video izle \n Notları deftere geçir\n"));
 
         assignmentAdapter = new DashboardAssignmentsAdapter(dashboardAssignmentHelpers);
-        assignmentRecycler.setAdapter(assignmentAdapter);
+        assignmentRecycler.setAdapter(assignmentAdapter);*/
     }
 
     public void goToAssignments(View view) {
