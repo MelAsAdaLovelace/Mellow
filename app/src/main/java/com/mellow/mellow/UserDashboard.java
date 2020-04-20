@@ -28,6 +28,7 @@ import com.mellow.mellow.Helpers.DashboardAssignmentHelper;
 import com.mellow.mellow.Helpers.CourseHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DashboardAssignmentsAdapter adapter;
@@ -170,13 +171,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    if(count < 5){
                         DashboardAssignmentHelper item = dataSnapshot1.getValue(DashboardAssignmentHelper.class);
                         assignmentList.add(item);
-                    }
-                    count++;
-
                 }
+                Collections.sort(assignmentList);
                 adapter = new DashboardAssignmentsAdapter(assignmentList);
                 assignmentRecycler.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

@@ -1,6 +1,6 @@
 package com.mellow.mellow.Helpers;
 
-public class DashboardAssignmentHelper {
+public class DashboardAssignmentHelper implements Comparable{
     String title, description, due;
 
     public DashboardAssignmentHelper(String title, String description, String due) {
@@ -34,5 +34,10 @@ public class DashboardAssignmentHelper {
 
     public void setDue(String due) {
         this.due = due;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.due.compareTo(((DashboardAssignmentHelper) o).due);
     }
 }
