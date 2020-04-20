@@ -57,17 +57,17 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/transparentWhite"
                 android:elevation="4dp"
-                app:counterMaxLength="15"
+                android:hint="@string/ass_title_hint"
                 app:counterEnabled="true"
-                android:hint="@string/ass_title_hint">
+                app:counterMaxLength="15">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ass_form_title_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="15"
                     android:elevation="20dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="15" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -98,18 +98,18 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/transparentWhite"
                 android:elevation="4dp"
-                app:counterMaxLength="50"
-                app:errorEnabled="true"
+                android:hint="@string/ass_descr_hint"
                 app:counterEnabled="true"
-                android:hint="@string/ass_descr_hint">
+                app:counterMaxLength="50"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ass_form_descr_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="20dp"
-                    android:maxLength="50"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="50" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -125,6 +125,7 @@
             app:layout_constraintTop_toBottomOf="@id/ass_form_add_descr_layout">
 
             <TextView
+                android:id="@+id/date_picker_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/antic"
@@ -133,35 +134,24 @@
                 android:textSize="20sp" />
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ass_form_date_input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/transparentWhite"
-                android:elevation="4dp"
-                app:counterMaxLength="15"
-                app:counterEnabled="true"
-                android:hint="@string/ass_descr_hint">
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ass_form_date_input_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="15"
-                    android:elevation="20dp"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <!--<TimePicker
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:scrollbarSize="3dp"
-                android:timePickerMode="spinner"/>
-            <DatePicker
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbarSize="3dp" />-->
+                <TextView
+                android:id="@+id/ass_form_date_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparentWhite"
+                android:checked="true"
+                android:fontFamily="@font/antic"
+                android:gravity="left"
+                android:text="@string/enter_due_date"
+                android:textColor="@color/japanese_indigo"
+                app:strokeWidth="1dp"></TextView>
 
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

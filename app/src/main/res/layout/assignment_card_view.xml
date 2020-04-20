@@ -38,6 +38,7 @@
             android:text="@string/ass_due_date"
             android:fontFamily="sans-serif-condensed-light"
             android:textSize="12sp"/>
+        
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

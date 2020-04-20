@@ -80,6 +80,7 @@
     <string name="cancel">Cancel</string>
     <string name="edit_ass">Edit Assignment</string>
     <string name="delete">Delete</string>
+    <string name="enter_due_date">Click to enter a due date</string>
 
 
 </resources>
